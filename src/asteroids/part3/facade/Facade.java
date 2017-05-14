@@ -9,7 +9,6 @@ import asteroids.model.Entity;
 import asteroids.model.IllegalNumberException;
 import asteroids.model.Ship;
 import asteroids.model.World;
-//import asteroids.part1.facade.*;
 import asteroids.part2.CollisionListener;
 import asteroids.model.Asteroid;
 //import asteroids.part3.facade.Planetoid;
@@ -214,7 +213,6 @@ public class Facade implements asteroids.part3.facade.IFacade {
 	@Override
 	public void removeShipFromWorld(World world, Ship ship) throws ModelException {
 		world.removeShip(ship);
-
 	}
 
 	@Override

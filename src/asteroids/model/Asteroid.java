@@ -14,13 +14,9 @@ public class Asteroid extends MinorPlanet{
      */
 	@Basic 
     public double getDensity(){
-    	return this.density;
+    	return (double) 2.65*Math.pow(10, 12);
     }
     
-    /**
-     * Variable registering the lowerbound of the density of each Asteroid.
-     */
-    private final double density = 2.65*Math.pow(10, 12);
     
     public void collideWithShip(Ship ship) throws IllegalNumberException,IllegalArgumentException {
     	ship.die();

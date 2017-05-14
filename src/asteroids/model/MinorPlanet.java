@@ -10,6 +10,7 @@ public abstract class MinorPlanet extends Entity {
 		if (! canHaveAsRadius(radius))
 			throw new IllegalNumberException(radius);
 		this.radius = radius;
+		setMass(mass);
 	}
 	 //methods about the radius of the MinorPlanet
 
