@@ -1,5 +1,5 @@
 package asteroids.expressions;
 
-public class MyExpression {
+public class ComposedExpression {
 
 }

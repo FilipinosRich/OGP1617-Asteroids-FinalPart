@@ -414,6 +414,7 @@ public class Facade implements asteroids.part3.facade.IFacade {
 	public void addAsteroidToWorld(World world, Asteroid asteroid) throws ModelException {
 		try {
 		world.addAsteroid(asteroid);
+		asteroid.setWorld(world);
 		} catch(IllegalNumberException e) {
 			throw new ModelException(e);
 		} catch(IllegalArgumentException e) {

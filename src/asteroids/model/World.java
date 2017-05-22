@@ -1042,7 +1042,7 @@ public class World {
 			return false;
 		for (Asteroid asteroid2 :this.getAsteroids()){
 			if (asteroid.overlap(asteroid2) && asteroid!=asteroid2 )
-					return false;				
+				return false;				
 		}
 		for (Bullet bullet :this.getBullets()) {
 			if (bullet.overlap(asteroid) )
@@ -1098,8 +1098,8 @@ public class World {
 	 *       | new.hasAsShip(ship)
 	 */
 	public void addAsteroid(@Raw Asteroid asteroid) throws IllegalArgumentException, IllegalNumberException{
-		//if (!canHaveAsAsteroid(asteroid) || this.hasAsAsteroid(asteroid))
-			//throw new IllegalArgumentException();
+		if (!canHaveAsAsteroid(asteroid) || this.hasAsAsteroid(asteroid))
+			throw new IllegalArgumentException();
 		asteroids.add(asteroid);
 		entities.add(asteroid);
 	}
@@ -1126,4 +1126,11 @@ public class World {
 	public Set<Asteroid> getAsteroids() {
 		return asteroids;
 	}
+	
+	public void removeEntity(Entity entity) throws IllegalArgumentException{
+		if( !this.hasAsEntity(entity))
+			throw new IllegalArgumentException();
+		entities.remove(entity);
+	}
+    	
 } 

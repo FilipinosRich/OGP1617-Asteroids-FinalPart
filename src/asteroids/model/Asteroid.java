@@ -5,7 +5,6 @@ import be.kuleuven.cs.som.annotate.*;
 public class Asteroid extends MinorPlanet{
 	public Asteroid(double x,double y,double velocityx, double velocityy, double radius) throws IllegalArgumentException,IllegalNumberException{
 		super(x,y,velocityx,velocityy,radius);
-		
 	}
 	
 	/**
@@ -21,4 +20,14 @@ public class Asteroid extends MinorPlanet{
     public void collideWithShip(Ship ship) throws IllegalNumberException,IllegalArgumentException {
     	ship.die();
     }
+
+    public void die(){
+        if (this.getWorld()!=null)
+        	this.getWorld().removeAsteroid(this);
+        this.setWorld(null);
+        this.terminate();
+    }
+    	
+
+
 }

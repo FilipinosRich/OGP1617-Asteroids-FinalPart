@@ -48,7 +48,6 @@ public class Bullet extends Entity {
 	public Bullet(double x, double y, double velocityx, double velocityy, double radius)
 			throws IllegalNumberException{
 		super(x,y,velocityx,velocityy,radius);
-
 	}  
  
 	/**
@@ -63,8 +62,6 @@ public class Bullet extends Entity {
 	}
 	
 	//methods about the radius of the bullet
-
-
 
 	/**
 	 * Check whether this bullet can have the given radius as its radius.
@@ -87,6 +84,8 @@ public class Bullet extends Entity {
     public static double getLowerBound(){
     	return Bullet.radiusLowerBound;
     }
+
+
     
     /**
      * set the lower bound of the radius for this bullet to the given lowerbound if it is valid
@@ -317,7 +316,7 @@ public class Bullet extends Entity {
    public void bulletCollidesWithOtherEntity(Entity entity) throws IllegalNumberException {
        if (this.getSource()!=entity && this.getSource()!=null)
            this.die();
-           try{((Ship)entity).die();}
+           try{((Entity) entity).die();}
            catch (ClassCastException e){((Bullet) entity).die();}
    }
    
@@ -399,6 +398,7 @@ public class Bullet extends Entity {
 	   this.terminate();
        
    }
-   
+
+
 
 }

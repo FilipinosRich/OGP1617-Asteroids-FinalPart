@@ -351,7 +351,7 @@ public class Ship extends Entity{
 	/**
 	 * variable registering the force of any ship.
 	 */
-    private static final double force=1.1*Math.pow(10, 21);
+    private static final double force=1.1*Math.pow(10, 18);
     
     
     

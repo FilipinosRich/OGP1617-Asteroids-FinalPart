@@ -1,3 +1,4 @@
+
 package asteroids.model;
  
 import be.kuleuven.cs.som.annotate.Basic;
@@ -51,7 +52,7 @@ public abstract class Entity {
     		this.mass = ((double)4/3)*Math.PI*Math.pow(this.getRadius(),3)*this.getDensity();
 	}  
 	
-	private double mass;
+	protected double mass;
 	public abstract boolean isValidMass(double mass);
 	public abstract double getDensity();
 	/**
@@ -324,7 +325,7 @@ public abstract class Entity {
 	 * Variable registering the radius of this entity.
 	 */
 	
-	private final double radius;
+	protected final double radius;
 	
     
 	//methods associating world    
@@ -501,11 +502,10 @@ public abstract class Entity {
      * 		   if the two entities already overlap.
      * 		   if (overlap(entity))
      * @throws IllegalNumberException
-
      */
     public double getTimeToCollision(Entity entity) throws IllegalNumberException,IllegalArgumentException {
-        if (this.overlap(entity))
-        	throw new IllegalArgumentException();
+        //if (this.overlap(entity))
+        	//throw new IllegalArgumentException();
         if (this.scalarProductVeloPos(entity) >= 0)
             return Double.POSITIVE_INFINITY;
         if (( this.calculatedD(entity) <= 0))
@@ -1085,7 +1085,6 @@ public abstract class Entity {
     		this.setVelocity(-this.getVelocity()[0], this.getVelocity()[1]);
 	}
 
-    	
-    	
+    public abstract void die() throws IllegalNumberException, IllegalArgumentException;
+
 }
-	

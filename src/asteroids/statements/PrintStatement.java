@@ -1,5 +1,5 @@
 package asteroids.statements;
 
-public class MyStatement {
+public class PrintStatement {
 
 }
