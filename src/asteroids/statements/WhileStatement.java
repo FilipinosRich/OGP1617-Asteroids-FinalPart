@@ -1,7 +1,7 @@
 package asteroids.statements;
 
 import asteroids.expressions.Expression;
-import asteroids.statements.Statement;
+
 
 
 public class WhileStatement extends Statement {
@@ -28,7 +28,7 @@ public class WhileStatement extends Statement {
 	}
 	@Override
 	public void execute() {
-		Statement copy = (Statement) this.clone();
+		Statement copy = (Statement) this.deepClone();
 		getCondition().ship = ship;
 		getCondition().execute();
 		if (condition.getResult().equals(true)){
@@ -37,4 +37,5 @@ public class WhileStatement extends Statement {
 			getShip().getProgram().sequence.add(copy);
 		}
 	}
+	
 }

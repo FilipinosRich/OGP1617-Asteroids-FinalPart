@@ -10,17 +10,17 @@ import asteroids.model.*;
 
 
 public abstract class Statement implements Serializable {
-	public Ship ship;
+	protected Ship ship;
 	
-	public Ship getShip() {
+	protected Ship getShip() {
 		return ship;
 	}
 	
-	public void setShip(Ship ship) {
+	protected void setShip(Ship ship) {
 		this.ship = ship;
 	}
 	
-	public abstract void execute();
+	protected abstract void execute();
 	
 	/**
 	 * 

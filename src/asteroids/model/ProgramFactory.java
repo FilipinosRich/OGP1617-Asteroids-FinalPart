@@ -2,11 +2,14 @@ package asteroids.model;
 import asteroids.functions.*;
 import asteroids.part3.programs.IProgramFactory;
 import asteroids.part3.programs.SourceLocation;
+import asteroids.expressions.*;
+import asteroids.statements.*;
 
 import java.util.List;
 
 import asteroids.expressions.*;
 import asteroids.statements.*;
+import asteroids.expressions.EntityExpressions.*;
 public class ProgramFactory implements IProgramFactory<Expression, Statement, Function, Program> {
 
 	@Override
@@ -25,50 +28,50 @@ public class ProgramFactory implements IProgramFactory<Expression, Statement, Fu
 	public Statement createAssignmentStatement(String variableName, Expression value,
 			SourceLocation sourceLocation) {
 		// TODO Auto-generated method stub
-		return null;
+		return new AssignmentStatement(variableName,value);
 	}
 
 	@Override
 	public Statement createWhileStatement(Expression condition, Statement body, SourceLocation sourceLocation) {
 		// TODO Auto-generated method stub
-		return null;
+		return new WhileStatement(condition,body);
 	}
 
 	@Override
 	public Statement createBreakStatement(SourceLocation sourceLocation) {
 		// TODO Auto-generated method stub
-		return null;
+		return new BreakStatement();
 	}
 
 	@Override
 	public Statement createReturnStatement(Expression value, SourceLocation sourceLocation) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ReturnStatement(value);
 	}
 
 	@Override
 	public Statement createIfStatement(Expression condition, Statement ifBody, Statement elseBody,
 			SourceLocation sourceLocation) {
 		// TODO Auto-generated method stub
-		return null;
+		return new IfOptionalElseStatement(condition,ifBody,elseBody);
 	}
 
 	@Override
 	public Statement createPrintStatement(Expression value, SourceLocation sourceLocation) {
 		// TODO Auto-generated method stub
-		return null;
+		return new PrintStatement(value);
 	}
 
 	@Override
 	public Statement createSequenceStatement(List<Statement> statements, SourceLocation sourceLocation) {
 		// TODO Auto-generated method stub
-		return null;
+		return new SequenceStatement(statements);
 	}
 
 	@Override
 	public Expression createReadVariableExpression(String variableName, SourceLocation sourceLocation) {
 		// TODO Auto-generated method stub
-		return null;
+		return new VariableName(variableName);
 	}
 
 	@Override
@@ -99,7 +102,7 @@ public class ProgramFactory implements IProgramFactory<Expression, Statement, Fu
 	@Override
 	public Expression createDoubleLiteralExpression(double value, SourceLocation location) {
 		// TODO Auto-generated method stub
-		return null;
+		return new DoubleLiteralExpression(value);
 	}
 
 	@Override
@@ -117,7 +120,7 @@ public class ProgramFactory implements IProgramFactory<Expression, Statement, Fu
 	@Override
 	public Expression createShipExpression(SourceLocation location) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ShipExpression();
 	}
 
 	@Override
@@ -195,13 +198,13 @@ public class ProgramFactory implements IProgramFactory<Expression, Statement, Fu
 	@Override
 	public Expression createAdditionExpression(Expression e1, Expression e2, SourceLocation location) {
 		// TODO Auto-generated method stub
-		return null;
+		return new AdditionExpression(e1,e2);
 	}
 
 	@Override
 	public Expression createMultiplicationExpression(Expression e1, Expression e2, SourceLocation location) {
 		// TODO Auto-generated method stub
-		return null;
+		return new MultiplicationExpression(e1,e2);
 	}
 
 	@Override
