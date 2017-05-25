@@ -11,10 +11,10 @@ public abstract class BinaryExpression extends ComposedExpression {
 	@Model
 	protected BinaryExpression(Expression left, Expression right)
 			throws IllegalOperandException {
-		if (!canHaveAsOperand(left))
-			throw new IllegalOperandException(this, left);
-		if (!canHaveAsOperand(right))
-			throw new IllegalOperandException(this, right);
+		//if (!canHaveAsOperand(left))
+			//throw new IllegalOperandException(this, left);
+		//if (!canHaveAsOperand(right))
+			//throw new IllegalOperandException(this, right);
 		setOperandAt(1, left);
 		setOperandAt(2, right);
 	}
@@ -77,7 +77,7 @@ public abstract class BinaryExpression extends ComposedExpression {
 	public final boolean canHaveAsNbOperands(int number) {
 		return number == 2;
 	}
-
+	@Override
 	@Basic
 	public final int getNbOperands() {
 		return 2;

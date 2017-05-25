@@ -1,6 +1,7 @@
 package asteroids.expressions;
 
 import asteroids.expressions.*;
+import asteroids.model.Ship;
 import be.kuleuven.cs.som.annotate.Basic;
 import be.kuleuven.cs.som.annotate.Immutable;
 
@@ -22,17 +23,6 @@ public class DoubleLiteralExpression extends BasicExpression {
 	public double getValue() {
 		return value;
 	}
-	
-	@Override
-	public String toString() {
-		return Double.toString(getValue());
-	}
-
-	@Override
-	public boolean isMutable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public Object getResult() {
@@ -41,9 +31,13 @@ public class DoubleLiteralExpression extends BasicExpression {
 	}
 
 	@Override
-	public void execute() {
+	public void execute(Ship ship) {
 		// TODO Auto-generated method stub
 		
 	}
+	
+
+
+
 
 }

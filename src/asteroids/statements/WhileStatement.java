@@ -1,6 +1,7 @@
 package asteroids.statements;
 
 import asteroids.expressions.Expression;
+import asteroids.model.Ship;
 
 
 
@@ -27,10 +28,10 @@ public class WhileStatement extends Statement {
 		this.body = body;
 	}
 	@Override
-	public void execute() {
+	public void execute(Ship ship) {
 		Statement copy = (Statement) this.deepClone();
 		getCondition().ship = ship;
-		getCondition().execute();
+		getCondition().execute(ship);
 		if (condition.getResult().equals(true)){
 			getBody().ship = ship;
 			getShip().getProgram().sequence.add(getBody());

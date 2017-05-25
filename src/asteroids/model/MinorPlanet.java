@@ -98,6 +98,6 @@ public abstract class MinorPlanet extends Entity {
     	return (mass>=((double)(4/3)*Math.PI*Math.pow(this.getRadius(),3)*this.getDensity()));
     }
 
-    
+    public abstract double getDensity();
     
 }

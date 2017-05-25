@@ -1032,9 +1032,18 @@ public class Ship extends Entity{
         this.terminate();
     }
 
-
+    public void executeProgram(double dt) {
+    	setExecutingProgram(true);
+    	if (this.getProgram().getAvailability() == true) {
+    		
+    	}
+    	
+    }
     private Program program;
     
+    public void setExecutingProgram(boolean ds) {
+    	this.isExecutingProgram = ds;
+    }
     public void setProgram(Program program) {
     	this.program = program;
     }
@@ -1042,7 +1051,11 @@ public class Ship extends Entity{
     public Program getProgram() {
     	return program;
     }
-
+    private boolean isExecutingProgram;
+    public boolean isExecutingProgram() {
+    	return isExecutingProgram;
+    }
     
+    private final double timeExecuteActionStatement = (double) 0.2;
     
 } 

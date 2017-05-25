@@ -1,5 +1,7 @@
 package asteroids.expressions;
 
+import asteroids.model.Ship;
+
 public class VariableName<T> extends Expression<T> {
 	public VariableName(String var) {
 		this.var = var;
@@ -14,7 +16,7 @@ public class VariableName<T> extends Expression<T> {
 	private T result;
 	
 	@Override
-	public void execute() {
+	public void execute(Ship ship) {
 		if (getShip().getProgram().assignment.containsKey(getName())){
 			setResult((T)getShip().getProgram().assignment.get(getName()));
 		}
@@ -42,23 +44,10 @@ public class VariableName<T> extends Expression<T> {
 		return false;
 	}
 
-	@Override
-	public boolean isMutable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
-	@Override
-	public String toPostfix() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 }

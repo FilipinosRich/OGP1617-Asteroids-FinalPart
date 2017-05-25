@@ -9,7 +9,7 @@ public abstract class BasicExpression extends Expression {
 		return expression == this;
 	}
 	
-	@Override
+	
 	public String toPostfix() {
 		return toString();
 	}

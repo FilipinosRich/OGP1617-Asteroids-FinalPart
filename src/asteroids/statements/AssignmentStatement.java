@@ -29,9 +29,9 @@ public class AssignmentStatement extends Statement {
 		this.value = value;
 	}
 	
-	public void execute(){
+	public void execute(Ship ship){
 		getValue().ship = ship;
-		getValue().execute();
+		getValue().execute(ship);
 		getShip().getProgram().assignment.put(getVariableName(), getValue().getResult());
 		
 	}

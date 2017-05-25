@@ -3,6 +3,7 @@ package asteroids.statements;
 import javax.sound.midi.Sequence;
 
 import asteroids.expressions.*;
+import asteroids.model.Ship;
 
 public class IfOptionalElseStatement extends Statement {
 	
@@ -41,9 +42,9 @@ public class IfOptionalElseStatement extends Statement {
 	}
 	
 	@Override
-	public void execute() {
+	public void execute(Ship ship) {
 		getCondition().ship = ship;
-		getCondition().execute();
+		getCondition().execute(ship);
 		if (condition.getResult().equals(true)){
 			getIfbody().ship = ship;
 			getShip().getProgram().sequence.add(getIfbody());

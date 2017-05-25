@@ -1,12 +1,21 @@
 package asteroids.expressions.EntityExpressions;
 
-import asteroids.expressions.*;
+import java.util.*;
+
+import asteroids.expressions.Expression;
+import asteroids.model.Entity;
 import asteroids.model.Ship;
 
-public class ShipExpression<T> extends Expression<T>{
+public class AnyExpression<T> extends Expression {
 	@Override
 	public T getResult() {
-		return (T) ship;
+		return this.entityAny;
+	}
+	
+	private T entityAny;
+	
+	public void setAnyEntity(T entity) {
+		this.entityAny= entity;
 	}
 
 	@Override
@@ -14,20 +23,21 @@ public class ShipExpression<T> extends Expression<T>{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 	@Override
 	public boolean hasAsSubExpression(Expression expression) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 	
+
 	@Override
 	public void execute(Ship ship) {
 		// TODO Auto-generated method stub
-		setShip(ship);
-	}
-	
-	private T ship;
-	public void setShip(T ship) {
-		this.ship = ship;
+		Set<T> min = (Set<T>) ship.getWorld().getEntities();
+		Iterator iter = min.iterator();
+		Object first = (T)iter.next();
+		setAnyEntity((T) first);
 	}
 }

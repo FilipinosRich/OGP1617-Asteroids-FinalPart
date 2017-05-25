@@ -13,6 +13,7 @@ import asteroids.part2.CollisionListener;
 import asteroids.model.Asteroid;
 //import asteroids.part3.facade.Planetoid;
 import asteroids.model.Program;
+import asteroids.model.ProgramFactory;
 import asteroids.part3.programs.IProgramFactory;
 import asteroids.util.ModelException;
 public class Facade implements asteroids.part3.facade.IFacade {
@@ -549,13 +550,13 @@ public class Facade implements asteroids.part3.facade.IFacade {
 */	@Override
 	public Program getShipProgram(Ship ship) throws ModelException {
 		// TODO Auto-generated method stub
-		return null;
+		return ship.getProgram();
 	}
 
 	@Override
 	public void loadProgramOnShip(Ship ship, Program program) throws ModelException {
 		// TODO Auto-generated method stub
-		
+		ship.setProgram(program);
 	}
 
 	@Override
@@ -567,7 +568,7 @@ public class Facade implements asteroids.part3.facade.IFacade {
 	@Override
 	public IProgramFactory<?, ?, ?, ? extends Program> createProgramFactory() throws ModelException {
 		// TODO Auto-generated method stub
-		return null;
+		return new ProgramFactory();
 	}
  
 }

@@ -1,6 +1,7 @@
 package asteroids.statements;
 
 import asteroids.expressions.Expression;
+import asteroids.model.Ship;
 
 public class ReturnStatement extends Statement {
 	public ReturnStatement(Expression<?> value) {
@@ -18,9 +19,8 @@ public class ReturnStatement extends Statement {
 	}
 
 	@Override
-	protected void execute() {
-		getValue().ship = ship;
-		return getValue().execute();
+	public void execute(Ship ship) {
+		execute(ship);
 		
 	}
 

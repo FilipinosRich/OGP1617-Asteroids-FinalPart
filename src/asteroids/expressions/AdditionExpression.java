@@ -1,6 +1,7 @@
 package asteroids.expressions;
 import asteroids.expressions.*;
 import asteroids.expressions.exceptions.*;
+import asteroids.model.Ship;
 
 
 public class AdditionExpression extends BinaryExpression  {
@@ -25,10 +26,13 @@ public class AdditionExpression extends BinaryExpression  {
 	}
 
 	@Override
-	public void execute() {
+	public void execute(Ship ship) {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
 	
 
 

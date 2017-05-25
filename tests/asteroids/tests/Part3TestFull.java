@@ -18,12 +18,10 @@ import org.junit.Test;
 
 import asteroids.model.Asteroid;
 import asteroids.model.Bullet;
-import asteroids.model.Planetoid;
 import asteroids.model.Ship;
 import asteroids.model.World;
 import asteroids.part3.facade.IFacade;
 import asteroids.model.Program;
-import asteroids.model.programs.ProgramFactory;
 import asteroids.part3.programs.IProgramFactory;
 import asteroids.part3.programs.internal.ProgramParser;
 import asteroids.util.ModelException;
@@ -36,7 +34,7 @@ public class Part3TestFull {
 
   static int nbStudentsInTeam;
   IFacade facade;
-  IProgramFactory<?, ?, ?, Program> programFactory = new ProgramFactory();
+  IProgramFactory<?, ?, ?, Program> programFactory;
   World filledWorld;
   Ship ship1, ship2, ship3;
   Bullet bullet1;
@@ -51,6 +49,7 @@ public class Part3TestFull {
   @Before
   public void setUp() throws ModelException {
     facade = new asteroids.part3.facade.Facade();
+    programFactory = (IProgramFactory<?, ?, ?, Program>) facade.createProgramFactory();
     nbStudentsInTeam = facade.getNbStudentsInTeam();
     filledWorld = facade.createWorld(2000, 2000);
     ship1 = facade.createShip(100, 120, 10, 5, 50, 0, 1.0E20);
@@ -91,6 +90,7 @@ public class Part3TestFull {
     try {
       max_score += 2;
       facade.createShip(Double.NaN, 120, 10, 5, 50, 0, 1.0E20);
+      fail();
     } catch (ModelException exc) {
       score += 2;
     }
@@ -140,6 +140,7 @@ public class Part3TestFull {
     try {
       max_score += 1;
       facade.createShip(100, 120, 10, 5, Double.NaN, 0, 1.0E20);
+      fail();
     } catch (ModelException exc) {
       score += 1;
     }
@@ -150,6 +151,7 @@ public class Part3TestFull {
     try {
       max_score += 2;
       facade.createShip(100, 120, 10, 5, 0, 0, 1.0E20);
+      fail();
     } catch (ModelException exc) {
       score += 2;
     }
@@ -160,6 +162,7 @@ public class Part3TestFull {
     try {
       max_score += 1;
       facade.createShip(100, 120, 10, 5, 50, -Math.PI, 1.0E20);
+      fail();
     } catch (ModelException exc) {
       score += 1;
     }
@@ -170,6 +173,7 @@ public class Part3TestFull {
     try {
       max_score += 1;
       facade.createShip(100, 120, 10, 5, 50, 3 * Math.PI, 1.0E20);
+      fail();
     } catch (ModelException exc) {
       score += 1;
     }
@@ -265,25 +269,25 @@ public class Part3TestFull {
     score += 4;
   }
 
-  @Test
+ /* @Test
   public void testCreatePlanetoid() throws ModelException {
     if (nbStudentsInTeam > 1) {
       max_score += 10;
-      Planetoid planetoid = facade.createPlanetoid(100, 120, 10, 5, 50, 1000);
+      //Planetoid planetoid = facade.createPlanetoid(100, 120, 10, 5, 50, 1000);
       assertEquals(100, facade.getPlanetoidPosition(planetoid)[0], EPSILON);
       assertEquals(120, facade.getPlanetoidPosition(planetoid)[1], EPSILON);
       assertEquals(10, facade.getPlanetoidVelocity(planetoid)[0], EPSILON);
       assertEquals(5, facade.getPlanetoidVelocity(planetoid)[1], EPSILON);
       assertEquals(50 - 1000 * 0.000001, facade.getPlanetoidRadius(planetoid), EPSILON);
-      assertEquals(4.0 * 0.917E12 * Math.PI * Math.pow(facade.getPlanetoidRadius(planetoid), 3) / 3.0,
-          facade.getPlanetoidMass(planetoid), BIG_EPSILON);
+      //assertEquals(4.0 * 0.917E12 * Math.PI * Math.pow(facade.getPlanetoidRadius(planetoid), 3) / 3.0,
+        //  facade.getPlanetoidMass(planetoid), BIG_EPSILON);
       assertEquals(1000, facade.getPlanetoidTotalTraveledDistance(planetoid), EPSILON);
       assertNull(facade.getPlanetoidWorld(planetoid));
       score += 10;
     }
-  }
+  }*/
 
-  @Test
+  /*@Test
   public void testGetRadiusPlanetoid() throws ModelException {
     if (nbStudentsInTeam > 1) {
       max_score += 10;
@@ -294,9 +298,9 @@ public class Part3TestFull {
       assertEquals(50 - 1000 * 50 * 0.000001, facade.getPlanetoidRadius(planetoid), EPSILON);
       score += 10;
     }
-  }
+  }*/
 
-  @Test
+ /* @Test
   public void testCreatePlanetoidTotalTraveledDistanceTooHigh() throws ModelException {
     if (nbStudentsInTeam > 1) {
       max_score += 7;
@@ -304,7 +308,7 @@ public class Part3TestFull {
       assertTrue(facade.isTerminatedPlanetoid(planetoid));
       score += 7;
     }
-  }
+  }*/
 
   @Test
   public void testCreateWorld() throws ModelException {
@@ -368,6 +372,7 @@ public class Part3TestFull {
       max_score += 1;
       World world = facade.createWorld(1000, 1000);
       facade.addShipToWorld(world, null);
+      fail();
     } catch (ModelException exc) {
       score += 1;
     }
@@ -380,6 +385,7 @@ public class Part3TestFull {
       World world = facade.createWorld(1000, 1000);
       Ship ship = facade.createShip(100000, 1200000, 10, 5, 50, 0, 1.0E20);
       facade.addShipToWorld(world, ship);
+      fail();
     } catch (ModelException exc) {
       score += 4;
     }
@@ -394,6 +400,7 @@ public class Part3TestFull {
       Ship ship2 = facade.createShip(130, 150, 10, 5, 50, 0, 1.0E20);
       facade.addShipToWorld(world, ship1);
       facade.addShipToWorld(world, ship2);
+      fail();
     } catch (ModelException exc) {
       score += 3;
     }
@@ -407,6 +414,7 @@ public class Part3TestFull {
       Ship ship = facade.createShip(100, 120, 10, 5, 50, 0, 1.0E20);
       facade.addShipToWorld(world, ship);
       facade.addShipToWorld(world, ship);
+      fail();
     } catch (ModelException exc) {
       score += 1;
     }
@@ -450,6 +458,7 @@ public class Part3TestFull {
       Bullet bullet = facade.createBullet(130, 150, 10, 5, 50);
       facade.addShipToWorld(world, ship);
       facade.addBulletToWorld(world, bullet);
+      fail();
     } catch (ModelException exc) {
       score += 4;
     }
@@ -481,6 +490,7 @@ public class Part3TestFull {
       facade.addShipToWorld(world, ship1);
       facade.addShipToWorld(world, ship2);
       facade.removeShipFromWorld(world, null);
+      fail();
     } catch (ModelException exc) {
       score += 1;
     }
@@ -495,6 +505,7 @@ public class Part3TestFull {
       Ship ship2 = facade.createShip(400, 520, 10, 5, 50, 0, 1.0E20);
       facade.addShipToWorld(world, ship1);
       facade.removeShipFromWorld(world, ship2);
+      fail();
     } catch (ModelException exc) {
       score += 2;
     }
@@ -511,6 +522,7 @@ public class Part3TestFull {
       facade.addShipToWorld(world, ship1);
       facade.addShipToWorld(otherWorld, ship2);
       facade.removeShipFromWorld(world, ship2);
+      fail();
     } catch (ModelException exc) {
       score += 3;
     }
@@ -636,6 +648,7 @@ public class Part3TestFull {
       Ship ship = facade.createShip(100, 120, 10, 5, 500, 0, 1.0E20);
       Bullet bullet = facade.createBullet(560, 120, 10, 5, 50);
       facade.loadBulletOnShip(ship, bullet);
+      fail();
     } catch (ModelException exc) {
       score += 5;
     }
@@ -662,6 +675,7 @@ public class Part3TestFull {
       Bullet bullet = facade.createBullet(100, 120, 10, 5, 50);
       facade.addBulletToWorld(world, bullet);
       facade.loadBulletOnShip(ship, bullet);
+      fail();
     } catch (ModelException exc) {
       score += 5;
     }
@@ -747,6 +761,7 @@ public class Part3TestFull {
         assertEquals(0, facade.getNbBulletsOnShip(ship));
         throw new ModelException("Needed for a succesfull test.");
       }
+      fail();
     } catch (ModelException exc) {
       score += 6;
     }
@@ -1019,6 +1034,7 @@ public class Part3TestFull {
       facade.addShipToWorld(world, ship1);
       facade.addShipToWorld(world, ship2);
       facade.evolve(world, Double.NaN, null);
+      fail();
     } catch (ModelException exc) {
       score += 2;
     }
@@ -1034,6 +1050,7 @@ public class Part3TestFull {
       facade.addShipToWorld(world, ship1);
       facade.addShipToWorld(world, ship2);
       facade.evolve(world, -1, null);
+      fail();
     } catch (ModelException exc) {
       score += 2;
     }
@@ -1161,13 +1178,13 @@ public class Part3TestFull {
     score += 7;
   }
 
-  @Test
+ /* @Test
   public void testEvolveAfterShipPlanetoidCollision() throws ModelException {
     if (nbStudentsInTeam > 1) {
       max_score += 12;
       World world = facade.createWorld(5000, 5000);
       Ship ship1 = facade.createShip(500, 120, 10, 0, 50, 0, 1000);
-      Planetoid planetoid = facade.createPlanetoid(800, 120, -10, 0, 50, 0);
+      //Planetoid planetoid = facade.createPlanetoid(800, 120, -10, 0, 50, 0);
       facade.addShipToWorld(world, ship1);
       facade.addPlanetoidToWorld(world, planetoid);
       facade.evolve(world, 11, null);
@@ -1179,7 +1196,7 @@ public class Part3TestFull {
       assertEquals(120, facade.getPlanetoidPosition(planetoid)[1], EPSILON);
       score += 12;
     }
-  }
+  }*/
 
   @Test
   public void testEvolveShipBoundaryCollision() throws ModelException {
@@ -1417,6 +1434,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 0.3);
+      fail();
     } catch (ModelException exc) {
       score += 5;
     }
@@ -1430,6 +1448,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 0.3);
+      fail();
     } catch (ModelException exc) {
       score += 5;
     }
@@ -1448,6 +1467,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 5;
     }
@@ -1536,6 +1556,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 5;
     }
@@ -1613,6 +1634,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 0.3);
+      fail();
     } catch (ModelException exc) {
       score += 3;
     }
@@ -1660,7 +1682,7 @@ public class Part3TestFull {
       assertEquals(1.5, facade.getShipOrientation(ship1), EPSILON);
       Object[] expecteds = { 0.4 };
       assertArrayEquals(expecteds, results.toArray());
-      score += 3;
+      score += 5;
     } catch (ModelException exc) {
       assertEquals(1.5, facade.getShipOrientation(ship1), EPSILON);
       score += 5;
@@ -1675,6 +1697,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 0.3);
+      fail();
     } catch (ModelException exc) {
       score += 3;
     }
@@ -1720,6 +1743,7 @@ public class Part3TestFull {
         Program program = ProgramParser.parseProgramFromString(code, programFactory);
         facade.loadProgramOnShip(ship1, program);
         facade.executeProgram(ship1, 0.3);
+        fail();
       } catch (ModelException exc) {
         score += 3;
       }
@@ -1770,6 +1794,7 @@ public class Part3TestFull {
         Program program = ProgramParser.parseProgramFromString(code, programFactory);
         facade.loadProgramOnShip(ship1, program);
         facade.executeProgram(ship1, 0.3);
+        fail();
       } catch (ModelException exc) {
         score += 3;
       }
@@ -1809,6 +1834,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 0.3);
+      fail();
     } catch (ModelException exc) {
       score += 3;
     }
@@ -1894,6 +1920,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 5;
     }
@@ -2013,6 +2040,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 12;
     }
@@ -2156,7 +2184,7 @@ public class Part3TestFull {
 
   // Planetoid
 
-  @Test
+  /*@Test
   public void testPlanetoid_PlanetoidsInWorld() throws ModelException {
     if (nbStudentsInTeam > 1) {
       max_score += 4;
@@ -2175,7 +2203,7 @@ public class Part3TestFull {
       assertArrayEquals(expecteds, results.toArray());
       score += 4;
     }
-  }
+  }*/
 
   @Test
   public void testAsteroid_NoPlanetoidsInWorld() throws ModelException {
@@ -2241,8 +2269,8 @@ public class Part3TestFull {
       facade.addShipToWorld(world, ship1);
       Asteroid asteroid1 = facade.createAsteroid(200, 200, 0, 0, 20);
       facade.addAsteroidToWorld(world, asteroid1);
-      Planetoid planetoid1 = facade.createPlanetoid(250, 250, 0, 0, 20, 0);
-      facade.addPlanetoidToWorld(world, planetoid1);
+      //Planetoid planetoid1 = facade.createPlanetoid(250, 250, 0, 0, 20, 0);
+      //facade.addPlanetoidToWorld(world, planetoid1);
       facade.loadProgramOnShip(ship1, program);
       List<Object> results = facade.executeProgram(ship1, 1.0);
       Object[] expecteds = { asteroid1 };
@@ -2286,8 +2314,8 @@ public class Part3TestFull {
     facade.addShipToWorld(world, ship1);
     Asteroid asteroid1 = facade.createAsteroid(200, 200, 0, 0, 20);
     facade.addAsteroidToWorld(world, asteroid1);
-    Planetoid planetoid1 = facade.createPlanetoid(250, 250, 0, 0, 20, 0);
-    facade.addPlanetoidToWorld(world, planetoid1);
+    //Planetoid planetoid1 = facade.createPlanetoid(250, 250, 0, 0, 20, 0);
+    //facade.addPlanetoidToWorld(world, planetoid1);
     Set<? extends Object> allEntities = facade.getEntities(world);
     facade.loadProgramOnShip(ship1, program);
     List<Object> results = facade.executeProgram(ship1, 1.0);
@@ -2333,6 +2361,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 5;
     }
@@ -2360,6 +2389,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 5;
     }
@@ -2390,6 +2420,7 @@ public class Part3TestFull {
         Program program = ProgramParser.parseProgramFromString(code, programFactory);
         facade.loadProgramOnShip(ship1, program);
         facade.executeProgram(ship1, 1.0);
+        fail();
       } catch (ModelException exc) {
         score += 5;
       }
@@ -2442,6 +2473,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 0.3);
+      fail();
     } catch (ModelException exc) {
       score += 9;
     }
@@ -2468,6 +2500,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 0.3);
+      fail();
     } catch (ModelException exc) {
       score += 4;
     }
@@ -2481,6 +2514,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 0.3);
+      fail();
     } catch (ModelException exc) {
       score += 4;
     }
@@ -2494,6 +2528,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 0.3);
+      fail();
     } catch (ModelException exc) {
       score += 5;
     }
@@ -2507,6 +2542,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 0.3);
+      fail();
     } catch (ModelException exc) {
       score += 6;
     }
@@ -2534,6 +2570,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 5;
     }
@@ -2561,6 +2598,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 5;
     }
@@ -2588,6 +2626,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 2;
     }
@@ -2601,6 +2640,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 3;
     }
@@ -2628,6 +2668,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 2;
     }
@@ -2641,6 +2682,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 3;
     }
@@ -2668,6 +2710,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 2;
     }
@@ -2681,6 +2724,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 3;
     }
@@ -2708,6 +2752,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 2;
     }
@@ -2721,6 +2766,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 3;
     }
@@ -2748,6 +2794,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 2;
     }
@@ -2761,6 +2808,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 3;
     }
@@ -2841,6 +2889,7 @@ public class Part3TestFull {
       Program program = ProgramParser.parseProgramFromString(code, programFactory);
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
+      fail();
     } catch (ModelException exc) {
       score += 5;
     }

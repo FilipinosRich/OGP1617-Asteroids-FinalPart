@@ -20,9 +20,9 @@ public class PrintStatement extends Statement {
 		this.value = value;
 	}
 
-	public void execute() {
+	public void execute(Ship ship) {
 		getValue().ship = ship;
-		getValue().execute();
+		getValue().execute(ship);
 		System.out.println(value.getResult());
 	}
 	

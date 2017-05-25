@@ -103,12 +103,6 @@ public abstract class ComposedExpression extends Expression {
 	
 	public abstract String getOperatorSymbol();
 
-	@Override
-	public String toPostfix() {
-		String result = "";
-		for (int i = 1; i <= getNbOperands(); i++)
-			result += getOperandAt(i).toPostfix() + " ";
-		return result + getOperatorSymbol();
-	}
+
 
 }

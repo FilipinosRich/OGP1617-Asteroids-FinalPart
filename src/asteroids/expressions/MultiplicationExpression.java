@@ -1,6 +1,7 @@
 package asteroids.expressions;
 
 import asteroids.expressions.exceptions.IllegalOperandException;
+import asteroids.model.Ship;
 
 public class MultiplicationExpression extends BinaryExpression {
 	public MultiplicationExpression(Expression left, Expression right) throws IllegalOperandException{
@@ -23,9 +24,14 @@ public class MultiplicationExpression extends BinaryExpression {
 		return null;
 	}
 
+
 	@Override
-	public void execute() {
+	public void execute(Ship ship) {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
+
 }
