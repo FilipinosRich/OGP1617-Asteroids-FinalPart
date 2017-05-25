@@ -30,10 +30,17 @@ public class AssignmentStatement extends Statement {
 	}
 	
 	public void execute(Ship ship){
+		//super.execute(ship);
 		getValue().ship = ship;
 		getValue().execute(ship);
 		getShip().getProgram().assignment.put(getVariableName(), getValue().getResult());
 		
+	}
+
+	@Override
+	public Object getResult() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

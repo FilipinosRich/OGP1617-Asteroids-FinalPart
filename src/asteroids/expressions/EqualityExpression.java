@@ -1,5 +1,7 @@
 package asteroids.expressions;
 
+import java.util.List;
+
 import asteroids.expressions.exceptions.IllegalOperandException;
 import asteroids.model.Ship;
 
@@ -20,7 +22,7 @@ public class EqualityExpression extends BinaryExpression {
 		return 0;
 	}
 
-	
+	@Override
 	public Boolean getResult() {
 		// TODO Auto-generated method stub
 		return (getLeftOperand().getValue() == getRightOperand().getValue());
@@ -31,6 +33,7 @@ public class EqualityExpression extends BinaryExpression {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 
 

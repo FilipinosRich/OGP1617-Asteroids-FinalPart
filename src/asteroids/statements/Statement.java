@@ -15,7 +15,7 @@ import asteroids.expressions.Expression;
 import asteroids.model.*;
 
 
-public abstract class Statement implements Serializable {
+public abstract class Statement<T> implements Serializable {
 	public Ship ship;
 	
 	public Ship getShip() {
@@ -26,14 +26,18 @@ public abstract class Statement implements Serializable {
 		this.ship = ship;
 	}
 	
-	public void execute(Ship ship) {
-		if (dt > 0.2) {
-			setActionTime(dt);
+	public abstract void execute(Ship ship); /*{
+		if (ship.getTimeToExecute() > 0.2) {
+			this.setShip(ship);
 		} else {
 			List<Statement> keeper = new ArrayList<Statement>();
 			keeper.add(this);
 		}
-	}
+	
+	}*/
+	
+	public abstract T getResult();
+	
 	
 
 
@@ -63,11 +67,5 @@ public abstract class Statement implements Serializable {
 		   }
 		 }
 
-	public static double dt;
-	
-	public void setActionTime(double dt) {
-		this.actionTime = dt;
-	}
-	
-	public static double actionTime;
+
 }

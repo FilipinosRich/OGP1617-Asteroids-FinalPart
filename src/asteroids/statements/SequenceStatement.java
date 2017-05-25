@@ -16,6 +16,7 @@ public class SequenceStatement extends Statement {
 
 	@Override
 	public void execute(Ship ship) { 
+			//super.execute(ship);
 			for (Iterator<Statement> i = sequence.iterator(); i.hasNext();) {
 				if (!getShip().isExecutingProgram()){
 					Statement s = i.next();
@@ -43,6 +44,13 @@ public class SequenceStatement extends Statement {
 
 	public void setSequence(List<Statement> sequence) {
 		this.sequence = sequence;
+	}
+
+
+	@Override
+	public Object getResult() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

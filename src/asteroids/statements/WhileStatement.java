@@ -29,7 +29,7 @@ public class WhileStatement extends Statement {
 	}
 	@Override
 	public void execute(Ship ship) {
-		super.execute(ship);
+		//super.execute(ship);
 		Statement copy = (Statement) this.deepClone();
 		getCondition().ship = ship;
 		getCondition().execute(ship);
@@ -38,6 +38,11 @@ public class WhileStatement extends Statement {
 			getShip().getProgram().sequence.add(getBody());
 			getShip().getProgram().sequence.add(copy);
 		}
+	}
+	@Override
+	public Object getResult() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

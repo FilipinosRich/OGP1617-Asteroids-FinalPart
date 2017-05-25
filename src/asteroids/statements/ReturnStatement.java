@@ -20,7 +20,7 @@ public class ReturnStatement extends Statement {
 
 	@Override
 	public void execute(Ship ship) {
-		getValue().execute(ship);
+		//super.execute(ship);
 		setResult(value);
 	}
 	

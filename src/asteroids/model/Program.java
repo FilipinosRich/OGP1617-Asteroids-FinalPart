@@ -71,4 +71,8 @@ public class Program {
 		return expression.getResult();
 	}
 	public Map<String,Object> assignment = new HashMap<String,Object>();
+	
+	public Map<String,Object> getAssignment() {
+		return assignment;
+	}
 }

@@ -17,16 +17,28 @@ public class TurnStatement extends ActionStatement {
 	}
 	@Override
 	public void execute(Ship ship) {
-		super.execute(ship);
-		getExpression().execute(ship);
-		setAngle((double) getExpression().getResult());
-		getShip().turn(angle);
+		try {
+			//super.execute(ship);
+			getExpression().execute(ship);
+			setAngle((double) getExpression().getResult());
+			getShip().turn(angle); 
+			Thread.sleep(200);
+			ship.dt -= 0.2;
+		} catch(InterruptedException exc) {
+			
+		}
 	}
 	
 	public Expression<?> expression;
 	public void setExpression(Expression<?> expression) {
 		this.expression = expression;
  	}
+
+	@Override
+	public Object getResult() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 }

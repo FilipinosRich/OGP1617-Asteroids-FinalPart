@@ -14,8 +14,7 @@ public abstract class Expression<T> extends Statement implements Cloneable {
 
 
 
-	public abstract double getValue();
-	
+
 	public abstract boolean hasAsSubExpression(Expression expression);
 
 
@@ -34,7 +33,7 @@ public abstract class Expression<T> extends Statement implements Cloneable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	public abstract T getResult();
+
 
 	public boolean isMutable() {
 		// TODO Auto-generated method stub
@@ -51,6 +50,11 @@ public abstract class Expression<T> extends Statement implements Cloneable {
 			throw new AssertionError(exc);
 		}
 	}
+
+
+
+	public abstract double getValue();
+
 
 	
 	

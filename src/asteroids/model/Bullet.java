@@ -119,10 +119,10 @@ public class Bullet extends Entity {
     	return (isValidNumber(mass));
     }
     
-    public void setMass() {
+    public void setMass() throws IllegalNumberException {
     	mass = (double) 4 * Math.PI * this.getDensity() * Math.pow(this.getRadius(),3) / 3;
     	if (! isValidMass(mass)) {
-    		
+    		throw new IllegalNumberException(mass);
     	} else {
     		this.mass = mass;
     	}
@@ -131,7 +131,7 @@ public class Bullet extends Entity {
      * variable registering the mass of this bullet
      */
     private double mass;
-    public double getMass() {
+    public double getMass() throws IllegalNumberException {
     	setMass();
     	return mass;
     }
@@ -183,7 +183,7 @@ public class Bullet extends Entity {
 			return true;
 		if (this.getShip()!=ship && this.getShip()!=null)
 			return false;
-		return((!ship.isTerminated() && this.getWorld()==null));
+		return((!ship.isTerminated() /*&& this.getWorld()==null*/));
 	}
 
 	/**

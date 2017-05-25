@@ -9,7 +9,7 @@ public class BreakStatement extends Statement {
 
 	@Override
 	public void execute(Ship ship) {
-		super.execute(ship);
+		//super.execute(ship);
 		List<Statement> sequence = getShip().getProgram().sequence;
 		for (Statement subsequence: sequence) {
 			if (subsequence instanceof BreakStatement) {
@@ -21,6 +21,12 @@ public class BreakStatement extends Statement {
 				}
 			}
 		}
+	}
+
+	@Override
+	public Object getResult() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

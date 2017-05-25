@@ -21,8 +21,13 @@ public class PrintStatement extends Statement {
 	}
 	@Override
 	public void execute(Ship ship) {
-		getValue().execute(ship);
 		System.out.println(value.getResult());
+	}
+
+	@Override
+	public Object getResult() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

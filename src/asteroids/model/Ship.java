@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import asteroids.expressions.Expression;
 import asteroids.statements.ReturnStatement;
 import be.kuleuven.cs.som.annotate.*;
 
@@ -561,7 +562,7 @@ public class Ship extends Entity{
 	 *       | ! new.hasAsBullet(bullet)
 	 */
 	@Raw
-	public void removeBullet(Bullet bullet) throws IllegalArgumentException{
+	public void removeBullet(Bullet bullet) throws IllegalArgumentException,IllegalNumberException{
 		if (this.hasAsBullet(bullet)){
 		bullets.remove(bullet);
 		this.setMass(this.getMass()-bullet.getMass());}
@@ -1034,14 +1035,28 @@ public class Ship extends Entity{
         this.setWorld(null);
         this.terminate();
     }
-
-    public void executeProgram(double dt) {
+    
+    
+    public double dt;
+    public double getTimeToExecute() {
+    	return dt;
+    }
+    public List<Object> executeProgram(double timeToExecute) {
+    	List<Object> tracker = new ArrayList<Object>();
+    	this.dt = timeToExecute;
     	setExecutingProgram(true);
     	if (this.getProgram().getAvailability() == true) {
     		this.getProgram().getStatement().execute(this);
+    			Object e = this.getProgram().getStatement().getResult();
+    			tracker.add(e);
+    			return tracker;
     	}
+    	return null;
+    			
     	
     }
+    
+    
     private Program program;
     
     public void setExecutingProgram(boolean ds) {

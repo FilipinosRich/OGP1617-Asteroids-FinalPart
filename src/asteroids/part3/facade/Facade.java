@@ -145,7 +145,11 @@ public class Facade implements asteroids.part3.facade.IFacade {
 
 	@Override
 	public double getBulletMass(Bullet bullet) throws ModelException {
-		return bullet.getMass();
+		try {
+		return bullet.getMass(); }
+		catch(IllegalNumberException exc) {
+			throw new ModelException(exc);
+		}
 	}
 
 	@Override
@@ -273,7 +277,11 @@ public class Facade implements asteroids.part3.facade.IFacade {
 
 	@Override
 	public void removeBulletFromShip(Ship ship, Bullet bullet) throws ModelException {
-		ship.removeBullet(bullet);
+		try {
+		ship.removeBullet(bullet);}
+		catch(IllegalNumberException exc) {
+			throw new ModelException(exc);
+		}
 
 	}
 
@@ -563,11 +571,7 @@ public class Facade implements asteroids.part3.facade.IFacade {
 
 	@Override
 	public List<Object> executeProgram(Ship ship, double dt) throws ModelException {
-		ship.executeProgram(dt);
-		List<Object> results = new ArrayList<Object>();
-		Object az = new ReturnStatement(ship.getProgram().getStatement().getResult());
-		results.add(az);
-		return results;
+		return ship.executeProgram(dt);
 	}
 
 	@Override

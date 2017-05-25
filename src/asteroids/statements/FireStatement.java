@@ -11,13 +11,20 @@ public class FireStatement extends Statement {
 	public void execute(Ship ship) {
 		// TODO Auto-generated method stub
 		try {
-			super.execute(ship);
-			dt -= 0.2;
+		//	super.execute(ship);
+			ship.dt -= 0.2;
+			Thread.sleep(200);
 			getShip().fireBullet();
-		} catch (IllegalNumberException  e) {
+		} catch (IllegalNumberException | InterruptedException  e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public Object getResult() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

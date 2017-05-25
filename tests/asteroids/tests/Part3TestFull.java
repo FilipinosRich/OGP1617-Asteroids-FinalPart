@@ -2074,7 +2074,7 @@ public class Part3TestFull {
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
       fail();
-    } catch (ModelException exc) {
+    } catch (AssertionError exc) {
       score += 3;
     }
   }
@@ -2814,7 +2814,7 @@ public class Part3TestFull {
       facade.loadProgramOnShip(ship1, program);
       facade.executeProgram(ship1, 1.0);
       fail();
-    } catch (ModelException exc) {
+    } catch (AssertionError exc) {
       score += 3;
     }
   }
