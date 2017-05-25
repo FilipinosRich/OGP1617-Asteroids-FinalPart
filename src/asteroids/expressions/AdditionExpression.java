@@ -13,8 +13,7 @@ public class AdditionExpression<T> extends BinaryExpression  {
 	
 	@Override
 	public T getResult() {
-		Double e = getLeftOperand().getValue() + getRightOperand().getValue();
-		return (T) e;
+		return result;
 	}
 	
 	
@@ -27,15 +26,19 @@ public class AdditionExpression<T> extends BinaryExpression  {
 	@Override
 	public void execute(Ship ship) {
 		// TODO Auto-generated method stub
+		Double e = getLeftOperand().getValue() + getRightOperand().getValue();
+		setResult((T) e);
 	}
 
 	public double getValue() {
 		return getLeftOperand().getValue() + getRightOperand().getValue();
 	}
-	
-	public void updateList(List<Object> tracker) {
-		tracker.add(getResult());
+	private T result;
+	public void setResult(T e) {
+		this.result = (T)e;
 	}
+	
+
 
 
 

@@ -21,7 +21,7 @@ public class SkipStatement extends Statement {
 	@Override
 	public Object getResult() {
 		// TODO Auto-generated method stub
-		return null;
+		return ship.dt;
 	}
 
 

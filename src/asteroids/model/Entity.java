@@ -76,7 +76,6 @@ public abstract class Entity {
 	 */
 	 public void terminate() {
 		 this.isTerminated = true;
-		 this.setWorld(null);
 	 }
 	 
 	 /**
@@ -91,7 +90,7 @@ public abstract class Entity {
 	 /**
 	  * Variable registering whether this person is terminated.
 	  */
-	 private boolean isTerminated = false;
+	 public boolean isTerminated = false;
 	 
 	
 	

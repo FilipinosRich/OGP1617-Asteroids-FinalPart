@@ -271,9 +271,16 @@ public class Bullet extends Entity {
 	 */
 	@Raw
 	public void setWorld(World world) throws IllegalArgumentException {
-		if (!canHaveAsWorld(world) || this.getShip()!=null)
-			throw new IllegalArgumentException("Inappropriate world!");
-		this.world = world;	
+		//if (/*!canHaveAsWorld(world) ||*/ this.getShip()!=null)
+			//throw new IllegalArgumentException("Inappropriate world!");
+		//this.world = world;
+		if(! this.canHaveAsWorld(world)) {
+			throw new IllegalArgumentException("Not valid");
+		}
+		else if((this.getWorld() == null && this.getShip() != null) ) {
+			this.world = world;
+		}
+		this.world = world;
 
 	}
 	
@@ -406,7 +413,14 @@ public class Bullet extends Entity {
        if (this.getWorld()!=null)
     	   this.getWorld().removeBullet(this);
 	   this.terminate();
-       
+   }
+   
+
+   @Override
+   public void terminate() {
+	   this.setWorld(null);
+	   this.setShip(null);
+	   this.isTerminated = true;
    }
 
 

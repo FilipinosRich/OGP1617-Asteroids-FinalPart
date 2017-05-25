@@ -14,9 +14,10 @@ public class SelfExpression<T> extends Expression {
 		this.ship = ship;
 	}
 	private T ship;
+	
 	@Override
 	public void execute(Ship ship) {
-		setShip(ship);
+		this.setShip((T)ship);
 	}
 
 

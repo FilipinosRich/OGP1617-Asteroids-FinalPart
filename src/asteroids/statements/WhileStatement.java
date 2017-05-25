@@ -42,7 +42,7 @@ public class WhileStatement extends Statement {
 	@Override
 	public Object getResult() {
 		// TODO Auto-generated method stub
-		return null;
+		return getBody().getResult();
 	}
 
 	

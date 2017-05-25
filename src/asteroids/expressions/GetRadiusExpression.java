@@ -33,7 +33,7 @@ public class GetRadiusExpression<T> extends Expression<T> {
 	@Override
 	public T getResult() {
 		// TODO Auto-generated method stub
-		return null;
+		return (T) result;
 	}
 
 	@Override

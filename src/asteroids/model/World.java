@@ -54,16 +54,7 @@ public class World {
 		this.height = height;
 	}
 	
-	/**
-	 * Terminate this world.
-	 *
-	 * @post   This world  is terminated.
-	 *       | new.isTerminated()
-	 */
-	 public void terminate() {
-		 this.isTerminated = true;
-	 }
-	 
+
 	 /**
 	  * Return a boolean indicating whether or not this world
 	  * is terminated.
@@ -349,6 +340,7 @@ public class World {
 			throw new IllegalArgumentException();
 		ships.remove(ship);
 		entities.remove(ship);
+		ship.setWorld(null);
 	}
 
 	/**
@@ -600,6 +592,15 @@ public class World {
 	 * destroy this world. terminate and remove all entities
 	 */
 	public void destroy(){
+		this.terminate();
+	}
+	/**
+	 * Terminate this world.
+	 *
+	 * @post   This world  is terminated.
+	 *       | new.isTerminated()
+	 */
+	public void terminate() {
 		for (Ship ship: this.getShips())
 			ship.setWorld(null);
 		for (Bullet bullet: this.getBullets())
@@ -607,8 +608,7 @@ public class World {
 		this.ships= new HashSet<Ship>();
 		this.bullets=new HashSet<Bullet>();
 		this.entities=new HashSet<Entity>();
-
-		this.terminate();
+		this.isTerminated = true;
 	}
 	
 	// methods advancing the collisions of this world

@@ -34,10 +34,13 @@ public class TurnStatement extends ActionStatement {
 		this.expression = expression;
  	}
 
+	public double getAngle() {
+		return angle;
+	}
 	@Override
 	public Object getResult() {
 		// TODO Auto-generated method stub
-		return null;
+		return getAngle();
 	}
 
 

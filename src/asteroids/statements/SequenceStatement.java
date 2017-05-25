@@ -50,7 +50,7 @@ public class SequenceStatement extends Statement {
 	@Override
 	public Object getResult() {
 		// TODO Auto-generated method stub
-		return null;
+		return getSequence();
 	}
 
 

@@ -24,7 +24,7 @@ public class FireStatement extends Statement {
 	@Override
 	public Object getResult() {
 		// TODO Auto-generated method stub
-		return null;
+		return getShip().getBullets().size();
 	}
 
 

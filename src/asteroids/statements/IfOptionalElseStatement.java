@@ -44,23 +44,33 @@ public class IfOptionalElseStatement extends Statement {
 	@Override
 	public void execute(Ship ship) {
 		//super.execute(ship);
-		if (condition.getResult().equals(true)){
+		if (condition.getResult().equals(true) && getElsebody() == null){
 			getIfbody().ship = ship;
 			getShip().getProgram().sequence.add(getIfbody());
+			setResult(getIfbody());
 		} else {
 			if (getElsebody() != null){
 				getElsebody().ship = ship;
 				getShip().getProgram().sequence.add(getElsebody());
+				setResult(getElsebody());
 			}
 		}
 		
+	}
+	public Statement result;
+	public void setResult(Statement x) {
+		this.result = x;
 	}
 
 	@Override
 	public Object getResult() {
 		// TODO Auto-generated method stub
-		return null;
-	}
+		/*if (getElsebody() == null ) {
+			return getIfbody().getResult();
+		}
+		return getElsebody().getResult();
+	}*/
+		return result.getResult();}
 
 
 	

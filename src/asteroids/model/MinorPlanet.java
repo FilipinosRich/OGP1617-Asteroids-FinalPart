@@ -83,7 +83,10 @@ public abstract class MinorPlanet extends Entity {
     public double getMass() {
     	return this.mass;
     }
-    
+    /**
+     * Method to set the mass
+     * @throws IllegalNumberException
+     */
     public void setMass() throws IllegalNumberException {
     	double mass = (double) ((4/3)*Math.PI*Math.pow(this.getRadius(),3)*this.getDensity());
     	if (! isValidMass(mass)) 
