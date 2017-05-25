@@ -3,7 +3,7 @@ package asteroids.statements;
 import asteroids.expressions.Expression;
 import asteroids.model.Ship;
 
-public class TurnStatement extends Statement {
+public class TurnStatement extends ActionStatement {
 	public TurnStatement(Expression<?> angle) {
 		setExpression(angle);
 	}
@@ -17,8 +17,7 @@ public class TurnStatement extends Statement {
 	}
 	@Override
 	public void execute(Ship ship) {
-		// TODO Auto-generated method stub
-		getExpression().ship = ship;
+		super.execute(ship);
 		getExpression().execute(ship);
 		setAngle((double) getExpression().getResult());
 		getShip().turn(angle);

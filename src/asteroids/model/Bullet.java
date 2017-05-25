@@ -118,11 +118,21 @@ public class Bullet extends Entity {
     public boolean isValidMass(double mass) {
     	return (isValidNumber(mass));
     }
+    
+    public void setMass() {
+    	mass = (double) 4 * Math.PI * this.getDensity() * Math.pow(this.getRadius(),3) / 3;
+    	if (! isValidMass(mass)) {
+    		
+    	} else {
+    		this.mass = mass;
+    	}
+    }
     /**
      * variable registering the mass of this bullet
      */
     private double mass;
     public double getMass() {
+    	setMass();
     	return mass;
     }
     /** 

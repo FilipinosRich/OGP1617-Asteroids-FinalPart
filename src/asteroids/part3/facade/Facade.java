@@ -562,7 +562,8 @@ public class Facade implements asteroids.part3.facade.IFacade {
 	@Override
 	public List<Object> executeProgram(Ship ship, double dt) throws ModelException {
 		// TODO Auto-generated method stub
-		return null;
+		ship.executeProgram(dt);
+		return ship.getProgram().getStatement().getKeeper();
 	}
 
 	@Override

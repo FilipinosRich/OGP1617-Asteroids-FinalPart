@@ -1,6 +1,10 @@
 package asteroids.statements;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -20,7 +24,20 @@ public abstract class Statement implements Serializable {
 		this.ship = ship;
 	}
 	
-	public abstract void execute(Ship ship);
+	public void execute(Ship ship) {
+		if (dt > 0.2) {
+			setActionTime(dt);
+		} else {
+			keeper.add(this);
+		}
+	}
+	
+	private List<Object> keeper = new ArrayList<Object>();
+	public List<Object> getKeeper() {
+		execute(ship);
+		return keeper;
+	}
+
 	
 
 	
@@ -47,4 +64,11 @@ public abstract class Statement implements Serializable {
 		   }
 		 }
 
+	public static double dt;
+	
+	public void setActionTime(double dt) {
+		this.actionTime = dt;
+	}
+	
+	public static double actionTime;
 }

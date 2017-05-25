@@ -1035,7 +1035,7 @@ public class Ship extends Entity{
     public void executeProgram(double dt) {
     	setExecutingProgram(true);
     	if (this.getProgram().getAvailability() == true) {
-    		
+    		this.getProgram().getStatement().execute(this);
     	}
     	
     }
@@ -1056,6 +1056,6 @@ public class Ship extends Entity{
     	return isExecutingProgram;
     }
     
-    private final double timeExecuteActionStatement = (double) 0.2;
+  
     
 } 

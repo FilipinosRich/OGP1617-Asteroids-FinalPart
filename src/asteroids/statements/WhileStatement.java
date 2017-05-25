@@ -29,6 +29,7 @@ public class WhileStatement extends Statement {
 	}
 	@Override
 	public void execute(Ship ship) {
+		super.execute(ship);
 		Statement copy = (Statement) this.deepClone();
 		getCondition().ship = ship;
 		getCondition().execute(ship);

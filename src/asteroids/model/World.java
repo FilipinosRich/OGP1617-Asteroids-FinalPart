@@ -345,7 +345,7 @@ public class World {
 	 */
 	@Raw
 	public void removeShip(Ship ship) throws IllegalArgumentException{
-		if( !this.hasAsShip(ship))
+		if( ! this.hasAsShip(ship))
 			throw new IllegalArgumentException();
 		ships.remove(ship);
 		entities.remove(ship);
@@ -537,7 +537,8 @@ public class World {
 	public void removeBullet(Bullet bullet) throws IllegalArgumentException, IllegalNumberException{
 		if( this.hasAsBullet(bullet)){
 			bullets.remove(bullet);
-			entities.remove(bullet);}
+			entities.remove(bullet);
+			bullet.setWorld(null);}
 		else{throw new IllegalArgumentException();}
 	}
 	
@@ -755,7 +756,13 @@ public class World {
 			for (Ship ship: this.getShips()){
 				if ( hasSameEntities(bullet,ship,collision) &&  bullet.getSource()==null)
 					setCollisionWithBulletWithoutSource(bullet,ship);
-					}}
+					}
+			for (Asteroid asteroid: this.getAsteroids()) {
+				if (hasSameEntities(bullet,asteroid,collision)) {
+					setCollisionBetweenBulletAndOtherEntity(bullet,asteroid);
+				}
+			}
+			}
 		this.shipsAlreadyCollided=false;
 		if (! this.getBullets().isEmpty())
 			resolveBulletCollision();

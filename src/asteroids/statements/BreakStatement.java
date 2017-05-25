@@ -7,6 +7,7 @@ public class BreakStatement extends Statement {
 
 	@Override
 	public void execute(Ship ship) {
+		super.execute(ship);
 		List<Statement> sequence = getShip().getProgram().sequence;
 		for (Statement subsequence: sequence) {
 			if (subsequence instanceof BreakStatement) {

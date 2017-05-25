@@ -63,6 +63,7 @@ public abstract class Entity {
 	 */
 	 public void terminate() {
 		 this.isTerminated = true;
+		 this.setWorld(null);
 	 }
 	 
 	 /**
