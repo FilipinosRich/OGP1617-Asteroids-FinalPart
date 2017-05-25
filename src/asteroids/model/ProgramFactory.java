@@ -15,7 +15,6 @@ public class ProgramFactory implements IProgramFactory<Expression, Statement, Fu
 
 	@Override
 	public Program createProgram(List<Function> functions, Statement main) {
-		// TODO Auto-generated method stub
 		List<Function> program = new ArrayList<Function>();
 		if (functions != null && functions.size() > 0) {
 			for (Function pos : functions) {

@@ -52,8 +52,21 @@ public abstract class Entity {
     		this.mass = ((double)4/3)*Math.PI*Math.pow(this.getRadius(),3)*this.getDensity();
 	}  
 	
+	/**
+	 * variable registering mass of this entity
+	 */
 	protected double mass;
+	
+	/**
+	 * Abstract method for valid mass of entity
+	 * @param mass
+	 * @return whether or not the given mass is valid
+	 */
 	public abstract boolean isValidMass(double mass);
+	/**
+	 * Abstract method returning the density
+	 * @return the density of the respective entity
+	 */
 	public abstract double getDensity();
 	/**
 	 * Terminate this entity.

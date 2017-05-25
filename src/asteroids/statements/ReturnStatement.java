@@ -20,7 +20,16 @@ public class ReturnStatement extends Statement {
 
 	@Override
 	public void execute(Ship ship) {
-		execute(ship);
+		getValue().execute(ship);
+		setResult(value);
 	}
-
+	
+	public void setResult(Expression<?> expression) {
+		this.result = (Expression<?>) expression.getResult();
+	}
+	private Expression<?> result;
+	
+	public Expression<?> getResult() {
+		return result;
+	}
 }

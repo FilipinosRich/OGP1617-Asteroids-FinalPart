@@ -10,6 +10,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+
+import asteroids.expressions.Expression;
 import asteroids.model.*;
 
 
@@ -28,18 +30,15 @@ public abstract class Statement implements Serializable {
 		if (dt > 0.2) {
 			setActionTime(dt);
 		} else {
+			List<Statement> keeper = new ArrayList<Statement>();
 			keeper.add(this);
 		}
 	}
 	
-	private List<Object> keeper = new ArrayList<Object>();
-	public List<Object> getKeeper() {
-		execute(ship);
-		return keeper;
-	}
+
 
 	
-
+	
 	
 	/**
 	 * 

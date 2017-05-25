@@ -324,4 +324,18 @@ public class WorldTest {
 		assertTrue(aWorld.hasAsAsteroid(aAsteroid));
 		aWorld.evolve(10, null);
 	}
+	
+	@Test
+	public void evolve_AsteroidCollidesWithOtherAsteroid() throws Exception{
+		World aWorld = new World(100,100);
+		Asteroid aAsteroid= new Asteroid(15,15,0,10,10);
+		Asteroid bAsteroid= new Asteroid(15,40,0,-10,10);
+		aAsteroid.setWorld(aWorld);
+		aWorld.addAsteroid(aAsteroid);
+		bAsteroid.setWorld(aWorld);
+		aWorld.addAsteroid(bAsteroid);
+		aWorld.evolve(0.5,null);
+		assertEquals(aAsteroid.getVelocity()[1],10,EPSILON);
+		assertEquals(bAsteroid.getVelocity()[1],-10,EPSILON);
+	}
 }

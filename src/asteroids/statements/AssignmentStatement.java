@@ -35,4 +35,6 @@ public class AssignmentStatement extends Statement {
 		getShip().getProgram().assignment.put(getVariableName(), getValue().getResult());
 		
 	}
+
+
 }

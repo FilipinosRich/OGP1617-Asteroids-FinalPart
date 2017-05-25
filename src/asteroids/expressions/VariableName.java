@@ -17,8 +17,8 @@ public class VariableName<T> extends Expression<T> {
 	
 	@Override
 	public void execute(Ship ship) {
-		if (getShip().getProgram().assignment.containsKey(getName())){
-			setResult((T)getShip().getProgram().assignment.get(getName()));
+		if (ship.getProgram().assignment.containsKey(getName())){
+			setResult((T)ship.getProgram().assignment.get(getName()));
 		}
 		
 	}

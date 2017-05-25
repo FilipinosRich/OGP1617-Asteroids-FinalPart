@@ -19,12 +19,13 @@ public class PrintStatement extends Statement {
 	public void setValue(Expression<?> value) {
 		this.value = value;
 	}
-
+	@Override
 	public void execute(Ship ship) {
-		getValue().ship = ship;
 		getValue().execute(ship);
 		System.out.println(value.getResult());
 	}
+
+
 	
 	
 }

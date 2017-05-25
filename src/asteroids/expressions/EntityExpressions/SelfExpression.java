@@ -6,7 +6,7 @@ import asteroids.model.Ship;
 public class SelfExpression<T> extends Expression {
 	@Override 
 	public T getResult() {
-		return (T) this;
+		return (T) ship;
 	}
 	
 	
@@ -16,7 +16,7 @@ public class SelfExpression<T> extends Expression {
 	private T ship;
 	@Override
 	public void execute(Ship ship) {
-		setShip(getShip());
+		setShip(ship);
 	}
 
 

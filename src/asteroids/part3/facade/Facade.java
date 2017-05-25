@@ -1,5 +1,6 @@
 package asteroids.part3.facade;
  
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -15,6 +16,7 @@ import asteroids.model.Asteroid;
 import asteroids.model.Program;
 import asteroids.model.ProgramFactory;
 import asteroids.part3.programs.IProgramFactory;
+import asteroids.statements.ReturnStatement;
 import asteroids.util.ModelException;
 public class Facade implements asteroids.part3.facade.IFacade {
  
@@ -561,9 +563,11 @@ public class Facade implements asteroids.part3.facade.IFacade {
 
 	@Override
 	public List<Object> executeProgram(Ship ship, double dt) throws ModelException {
-		// TODO Auto-generated method stub
 		ship.executeProgram(dt);
-		return ship.getProgram().getStatement().getKeeper();
+		List<Object> results = new ArrayList<Object>();
+		Object az = new ReturnStatement(ship.getProgram().getStatement().getResult());
+		results.add(az);
+		return results;
 	}
 
 	@Override

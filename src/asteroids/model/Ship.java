@@ -1,10 +1,13 @@
 package asteroids.model;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import asteroids.statements.ReturnStatement;
 import be.kuleuven.cs.som.annotate.*;
 
 
@@ -1046,6 +1049,7 @@ public class Ship extends Entity{
     }
     public void setProgram(Program program) {
     	this.program = program;
+    	program.setShip(this);
     }
     
     public Program getProgram() {

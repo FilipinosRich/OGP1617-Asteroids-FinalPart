@@ -1,6 +1,7 @@
 package asteroids.model;
 import java.util.*;
 
+import asteroids.expressions.Expression;
 import asteroids.functions.*;
 import asteroids.statements.*;
 
@@ -8,10 +9,9 @@ import asteroids.statements.*;
 
 
 public class Program {
-	public Program(List<Function> function, Statement statement) {
+	public Program(List<Function> functions, Statement statement) {
 		setStatement(statement);
 		setAvailable(true);
-		
 	}
 	
 	public boolean getAvailability() {
@@ -32,6 +32,18 @@ public class Program {
 	
 	private Statement statement;
 	
+	private Expression<?> expression;
+	
+	public void setExpression(Expression<?> expression) {
+		this.expression = expression;
+	}
+	
+	public Expression<?> getExpression() {
+		return expression;
+	}
+	/**
+	 * keeping track of multiple statements
+	 */
 	public List<Statement> sequence = new ArrayList<Statement>();
 	
 	public void setWorld(World world) {
@@ -55,5 +67,8 @@ public class Program {
 		return ship;
 	}
 	
+	public Object getResult(Expression<?> expression) {
+		return expression.getResult();
+	}
 	public Map<String,Object> assignment = new HashMap<String,Object>();
 }

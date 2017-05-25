@@ -1,6 +1,7 @@
 package asteroids.statements;
 
 import asteroids.model.IllegalNumberException;
+import asteroids.expressions.Expression;
 import asteroids.model.*;
 
 public class FireStatement extends Statement {
@@ -18,4 +19,6 @@ public class FireStatement extends Statement {
 			e.printStackTrace();
 		}
 	}
+
+
 }

@@ -3,6 +3,7 @@ package asteroids.statements;
 import java.util.Iterator;
 import java.util.List;
 
+import asteroids.expressions.Expression;
 import asteroids.model.Ship;
 import asteroids.statements.Statement;
 
@@ -18,12 +19,7 @@ public class SequenceStatement extends Statement {
 			for (Iterator<Statement> i = sequence.iterator(); i.hasNext();) {
 				if (!getShip().isExecutingProgram()){
 					Statement s = i.next();
-					s.ship = ship;
-//					if (!(s instanceof StatementSequence)) {
-//						s.execute();
-//					} else {
-//						getShip().getProgram().sequence.add(s);
-//					}
+					s.ship = ship;				
 					if (!(s instanceof SequenceStatement)){
 						s.execute(ship);
 						i.remove();
@@ -48,5 +44,8 @@ public class SequenceStatement extends Statement {
 	public void setSequence(List<Statement> sequence) {
 		this.sequence = sequence;
 	}
+
+
+
 
 }

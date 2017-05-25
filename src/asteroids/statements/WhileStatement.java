@@ -39,5 +39,6 @@ public class WhileStatement extends Statement {
 			getShip().getProgram().sequence.add(copy);
 		}
 	}
+
 	
 }
